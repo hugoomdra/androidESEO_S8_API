@@ -15,12 +15,16 @@ class CreateDataTable extends Migration
     {
         Schema::create('data', function (Blueprint $table) {
             $table->id();
+            $table->integer('device_id')->unsigned();
             $table->double('luminosity');
             $table->double('battery_level');
             $table->double('pressure');
             $table->double('temperature');
             $table->string('position');
             $table->timestamps();
+
+            $table->foreign('device_id')->references('id')->on('devices')
+                ->onDelete('cascade');
         });
     }
 
