@@ -9,6 +9,10 @@ class Device extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nom'
+    ];
+
     public function data()
     {
         return $this->hasMany(Data::class);
