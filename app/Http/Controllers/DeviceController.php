@@ -14,17 +14,7 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Device::all();
     }
 
     /**
@@ -35,7 +25,7 @@ class DeviceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Device::create($request->all());
     }
 
     /**
@@ -46,18 +36,7 @@ class DeviceController extends Controller
      */
     public function show(Device $device)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Device  $device
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Device $device)
-    {
-        //
+        return $device;
     }
 
     /**
@@ -69,7 +48,8 @@ class DeviceController extends Controller
      */
     public function update(Request $request, Device $device)
     {
-        //
+        $device->update($request->all());
+
     }
 
     /**
@@ -80,6 +60,6 @@ class DeviceController extends Controller
      */
     public function destroy(Device $device)
     {
-        //
+        $device->delete();
     }
 }
