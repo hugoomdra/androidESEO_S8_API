@@ -15,7 +15,7 @@ class CreateDataTable extends Migration
     {
         Schema::create('data', function (Blueprint $table) {
             $table->id();
-            $table->integer('device_id')->unsigned();
+            $table->bigInteger('device_id')->unsigned();
             $table->double('luminosity');
             $table->double('battery_level');
             $table->double('pressure');
@@ -26,6 +26,8 @@ class CreateDataTable extends Migration
             $table->foreign('device_id')->references('id')->on('devices')
                 ->onDelete('cascade');
         });
+
+
     }
 
     /**
