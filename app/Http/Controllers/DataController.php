@@ -14,18 +14,9 @@ class DataController extends Controller
      */
     public function index()
     {
-        //
+        return Data::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +26,7 @@ class DataController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Data::create($request->all());
     }
 
     /**
@@ -46,18 +37,7 @@ class DataController extends Controller
      */
     public function show(Data $data)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Data  $data
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Data $data)
-    {
-        //
+        return $data;
     }
 
     /**
@@ -69,7 +49,8 @@ class DataController extends Controller
      */
     public function update(Request $request, Data $data)
     {
-        //
+        $data->update($request->all());
+
     }
 
     /**
@@ -80,6 +61,6 @@ class DataController extends Controller
      */
     public function destroy(Data $data)
     {
-        //
+        $data->delete();
     }
 }
