@@ -41,7 +41,24 @@ class DataController extends Controller
      */
     public function store(Request $request)
     {
-        Data::create($request->all());
+
+        $device = DB::table('devices')
+            ->where('token', $request->device_token)
+            ->first();
+
+        $device_id = $device->id;
+
+        $data = new Data;
+
+        $data->device_id = $device_id;
+        $data->luminosity = $request->luminosity;
+        $data->battery_level = $request->battery_level;
+        $data->pressure = $request->pressure;
+        $data->temperature = $request->temperature;
+        $data->position = $request->position;
+        
+        $data->save();
+
     }
 
     /**
