@@ -47,20 +47,15 @@ class DataController extends Controller
             ->first();
 
         $device_id = $device->id;
-        
-        print_r('<pre>');
-        print_r($device_id);
-        print_r('</pre>');
-        die();
 
-        $data = new Data;
-
-        $data->device_id = $device_id;
-        $data->luminosity = $request->luminosity;
-        $data->battery_level = $request->battery_level;
-        $data->pressure = $request->pressure;
-        $data->temperature = $request->temperature;
-        $data->position = $request->position;
+        $data = Data::create([
+            'device_id' => $device_id,
+            'luminosity' => $request->luminosity,
+            'battery_level' => $request->battery_level,
+            'pressure' => $request->pressure,
+            'temperature' => $request->temperature,
+            'position' => $request->position,
+        ]);
 
         $data->save();
 
