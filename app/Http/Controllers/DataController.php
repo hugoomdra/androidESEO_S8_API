@@ -15,11 +15,15 @@ class DataController extends Controller
      */
     public function index(Request $request)
     {
-        
+
+        $device = DB::table('devices')
+            ->where('token', $request->device_token)
+            ->first();
+
+        $device_id = $device->id;
 
         print_r('<pre>');
-        print_r("super test");
-
+        print_r($device);
         print_r('</pre>');
         die();
 
