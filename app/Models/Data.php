@@ -9,6 +9,15 @@ class Data extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'device_id',
+        'luminosity',
+        'temperature',
+        'battery_level',
+        'position',
+        'pressure',
+    ];
+
     public function device()
     {
         return $this->belongsTo(Device::class);
