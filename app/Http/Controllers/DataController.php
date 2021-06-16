@@ -56,7 +56,7 @@ class DataController extends Controller
         $data->pressure = $request->pressure;
         $data->temperature = $request->temperature;
         $data->position = $request->position;
-        
+
         $data->save();
 
     }
