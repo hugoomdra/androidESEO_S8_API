@@ -46,11 +46,8 @@ class DataController extends Controller
             ->where('token', $request->device_token)
             ->first();
 
-        print_r('<pre>');
-        print_r($device);
-        print_r('</pre>');
-        die();
-        
+        $device_id = $device->id;
+
         $data = new Data;
 
         $data->device_id = $device_id;
