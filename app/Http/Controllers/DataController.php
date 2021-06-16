@@ -15,13 +15,7 @@ class DataController extends Controller
      */
     public function index(Request $request)
     {
-
-        print_r('<pre>');
-        print_r($request);
-        print_r("e");
-        print_r('</pre>');
-        die();
-
+        
         if($request->has('device_token')){
 
             $datas = DB::table('data')
