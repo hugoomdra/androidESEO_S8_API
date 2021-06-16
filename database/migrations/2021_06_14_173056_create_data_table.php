@@ -21,6 +21,7 @@ class CreateDataTable extends Migration
             $table->double('pressure');
             $table->double('temperature');
             $table->string('position');
+            $table->string('date');
             $table->timestamps();
 
             $table->foreign('device_id')->references('id')->on('devices')

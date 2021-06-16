@@ -18,6 +18,7 @@ class Data extends Model
         'pressure',
         'created_at',
         'updated_at',
+        'date',
     ];
 
     public function device()
