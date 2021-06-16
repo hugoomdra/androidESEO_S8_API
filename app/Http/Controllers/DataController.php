@@ -47,6 +47,11 @@ class DataController extends Controller
             ->first();
 
         $device_id = $device->id;
+        
+        print_r('<pre>');
+        print_r($device_id);
+        print_r('</pre>');
+        die();
 
         $data = new Data;
 
@@ -58,7 +63,6 @@ class DataController extends Controller
         $data->position = $request->position;
 
         $data->save();
-
 
     }
 
