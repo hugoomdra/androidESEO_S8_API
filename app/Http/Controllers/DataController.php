@@ -15,7 +15,7 @@ class DataController extends Controller
      */
     public function index(Request $request)
     {
-        
+
         if($request->has('device_token')){
 
             $datas = DB::table('data')
@@ -58,6 +58,8 @@ class DataController extends Controller
         ]);
 
         $data->save();
+
+        return $data;
 
     }
 
