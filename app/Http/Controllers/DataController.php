@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Data;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DataController extends Controller
 {
@@ -12,9 +13,23 @@ class DataController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Data::all();
+
+        if($request->has('device_token')){
+
+            $datas = DB::table('data')
+                ->join('devices', 'data.device_id', '=', 'devices.id')
+                ->where('token', $request->device_token)
+                ->get();
+
+            return $datas;
+
+
+
+        }else{
+            return Data::all();
+        }
     }
 
 
