@@ -16,6 +16,8 @@ class Data extends Model
         'battery_level',
         'position',
         'pressure',
+        'created_at',
+        'updated_at',
     ];
 
     public function device()
