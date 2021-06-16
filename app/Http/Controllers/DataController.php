@@ -56,7 +56,7 @@ class DataController extends Controller
             'pressure' => $request->pressure,
             'temperature' => $request->temperature,
             'position' => $request->position,
-            'date' => Carbon::now()->toString(),
+            'date' => Carbon::now()->addHours(2)->format('d/m/Y H:i:s')
         ]);
 
         $data->save();
