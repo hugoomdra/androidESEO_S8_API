@@ -16,17 +16,6 @@ class DataController extends Controller
     public function index(Request $request)
     {
 
-        $device = DB::table('devices')
-            ->where('token', $request->device_token)
-            ->first();
-
-        $device_id = $device->id;
-
-        print_r('<pre>');
-        print_r($device);
-        print_r('</pre>');
-        die();
-
         if($request->has('device_token')){
 
             $datas = DB::table('data')
@@ -53,23 +42,15 @@ class DataController extends Controller
     public function store(Request $request)
     {
 
-        print_r('<pre>');
-        print_r("super test");
-        print_r($request);
-        print_r('</pre>');
-        die();
-
         $device = DB::table('devices')
             ->where('token', $request->device_token)
             ->first();
 
-        $device_id = $device->id;
-
         print_r('<pre>');
-        print_r($device_id);
         print_r($device);
         print_r('</pre>');
         die();
+        
         $data = new Data;
 
         $data->device_id = $device_id;
