@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Data;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -55,7 +56,7 @@ class DataController extends Controller
             'pressure' => $request->pressure,
             'temperature' => $request->temperature,
             'position' => $request->position,
-            'date' => $request->date,
+            'date' => Carbon::now()->toString(),
         ]);
 
         $data->save();
