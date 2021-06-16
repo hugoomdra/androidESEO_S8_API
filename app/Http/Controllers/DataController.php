@@ -42,6 +42,11 @@ class DataController extends Controller
     public function store(Request $request)
     {
 
+        print_r('<pre>');
+        print_r("super test");
+        print_r('</pre>');
+        die();
+
         $device = DB::table('devices')
             ->where('token', $request->device_token)
             ->first();
