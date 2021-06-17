@@ -46,7 +46,7 @@ class DeviceController extends Controller
             ->where('token', $request->device_token)
             ->get();
 
-        if (empty($devices)){
+        if ($devices->count() == 0){
             $device = Data::create([
                 'nom' => $request->nom,
                 'token' => $request->device_token,
