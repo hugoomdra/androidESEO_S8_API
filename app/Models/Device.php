@@ -10,7 +10,8 @@ class Device extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nom'
+        'nom',
+        'token',
     ];
 
     public function data()

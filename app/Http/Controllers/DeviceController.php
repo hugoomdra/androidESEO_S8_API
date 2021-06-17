@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Data;
 use App\Models\Device;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DeviceController extends Controller
 {
@@ -12,9 +15,23 @@ class DeviceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Device::all();
+
+        if($request->has('nom')){
+
+            $devices = DB::table('devices')
+                ->join('devices', 'data.device_id', '=', 'devices.id')
+                ->where('token', $request->device_token)
+                ->get();
+
+            return $devices;
+
+
+
+        }else{
+            return Device::all();
+        }
     }
 
     /**
@@ -25,7 +42,25 @@ class DeviceController extends Controller
      */
     public function store(Request $request)
     {
-        Device::create($request->all());
+        $devices = DB::table('devices')
+            ->where('token', $request->device_token)
+            ->get();
+
+        if (empty($devices)){
+            $device = Data::create([
+                'nom' => $request->nom,
+                'token' => $request->device_token,
+
+            ]);
+
+            $device->save();
+
+            return $device;
+        }else {
+            return array(
+                "message" => "token existe déjà"
+            );
+        }
     }
 
     /**
