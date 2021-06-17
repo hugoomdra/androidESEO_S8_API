@@ -16,10 +16,10 @@ class CreateDataTable extends Migration
         Schema::create('data', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('device_id')->unsigned();
-            $table->double('luminosity');
-            $table->double('battery_level');
-            $table->double('pressure');
-            $table->double('temperature');
+            $table->string('luminosity');
+            $table->string('battery_level');
+            $table->string('pressure');
+            $table->string('temperature');
             $table->string('position');
             $table->string('date');
             $table->timestamps();
