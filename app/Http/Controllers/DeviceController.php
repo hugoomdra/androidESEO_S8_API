@@ -55,10 +55,7 @@ class DeviceController extends Controller
 
             $device->save();
 
-            return $this->response([
-                "status" => "Success",
-                "message" => "Parfait"
-            ]);
+            return $device;
         }else {
 
             return $this->response([
