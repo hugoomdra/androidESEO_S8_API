@@ -46,6 +46,12 @@ class DeviceController extends Controller
             ->where('token', $request->device_token)
             ->get();
 
+        print_r('<pre>');
+        print_r($devices);
+        print_r($devices->count());
+        print_r('</pre>');
+        die();
+
         if ($devices->count() == 0){
             $device = Data::create([
                 'nom' => $request->nom,
