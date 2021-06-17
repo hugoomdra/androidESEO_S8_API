@@ -55,11 +55,18 @@ class DeviceController extends Controller
 
             $device->save();
 
-            return $device;
+            return $this->response([
+                "status" => "Success",
+                "message" => "Parfait"
+            ]);
         }else {
-            return array(
-                "message" => "token existe déjà"
-            );
+
+            return $this->response([
+                'error' => [
+                    'message' => "Impossible, le token existe déjà",
+                    'status_code' => 400
+                ]
+            ]);
         }
     }
 
